@@ -1,3 +1,7 @@
+param(
+    [string]$toolsPath = "$env:USERPROFILE\tools"
+)
+
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 $isAdmin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
@@ -123,8 +127,6 @@ function Install-VsCode-Extensions {
   Write-Output "- Finished Installing Visual Studio Code Extensions..."
   Write-Output "---"
 }
-
-$toolsPath = "$env:USERPROFILE\tools"
 
 try {
   Write-Output "Starting Tools Install..."

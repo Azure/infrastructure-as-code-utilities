@@ -23,12 +23,16 @@ It includes the following tools:
 
 How to run:
 
+In most cases you'll need to run this script as an administrator. You can run the script directly from the web using the following PowerShell script:
+
 ```powershell
-$temporaryPath = "~/temp-tools/Install-ToolsForWindows.ps1"
-New-Item -ItemType "file" $temporaryPath -Force
-(Invoke-WebRequest "https://raw.githubusercontent.com/Azure/terraform-utilities/refs/heads/main/terraform-bootstrap/Install-ToolsForWindows.ps1").Content | Out-File $temporaryPath -Force
-Invoke-Expression $temporaryPath
-#Remove-Item $temporaryPath
+$toolsPath = "$env:USERPROFILE/tools"
+$scriptFileName = "Install-ToolsForWindows.ps1"
+$scriptPath = Join-Path $toolsPath $scriptFileName
+New-Item -ItemType "file" $scriptPath -Force
+(Invoke-WebRequest "https://raw.githubusercontent.com/Azure/terraform-utilities/refs/heads/main/terraform-bootstrap/$scriptFileName").Content | Out-File $scriptPath -Force
+Invoke-Expression "$scriptPath -toolsPath `"$toolsPath`""
+#Remove-Item $scriptPath
 ```
 
 ## Contributing
