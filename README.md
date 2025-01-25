@@ -1,14 +1,35 @@
-# Project
+# Terraform Utilities
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This repository contains a collection of utilities for working with Terraform.
 
-As the maintainer of this project, please make a few updates:
+## Utilities
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+The utilities available in this repository are:
+
+### Bootstrap
+
+Utility scripts for bootstrapping a Terraform environment by installing the required tooling.
+    
+#### `terraform-bootstrap/Install-ToolsForWindows.ps1
+
+This script installs the base set of tools required for Terraform on Windows.
+
+It includes the following tools:
+
+* git CLI
+* Terraform CLI
+* Azure CLI
+* Visual Studio Code extensions for Azure Terraform
+
+How to run:
+
+```powershell
+$temporaryPath = "~/temp-tools/Install-ToolsForWindows.ps1"
+New-Item -ItemType "file" $temporaryPath -Force
+(Invoke-WebRequest "https://raw.githubusercontent.com/Azure/terraform-utilities/refs/heads/main/terraform-bootstrap/Install-ToolsForWindows.ps1").Content | Out-File $temporaryPath -Force
+Invoke-Expression $temporaryPath
+#Remove-Item $temporaryPath
+```
 
 ## Contributing
 
