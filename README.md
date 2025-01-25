@@ -10,7 +10,7 @@ The utilities available in this repository are:
 
 Utility scripts for bootstrapping a Terraform environment by installing the required tooling.
     
-#### `terraform-bootstrap/Install-ToolsForWindows.ps1
+#### terraform-bootstrap/Install-ToolsForWindows.ps1
 
 This script installs the base set of tools required for Terraform on Windows.
 
