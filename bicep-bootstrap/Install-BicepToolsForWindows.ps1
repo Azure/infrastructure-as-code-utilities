@@ -2,7 +2,7 @@ param(
   [string]$toolsPath = "$env:USERPROFILE\tools"
 )
 
-Write-Output "Starting Terraform Tools for Windows Install..."
+Write-Output "Starting Bicep Tools for Windows Install..."
 
 $ProgressPreference = 'SilentlyContinue';
 
@@ -20,18 +20,20 @@ $tools = @(
     name = "Visual Studio Code Extensions" 
     script = "Install-VisualStudioCodeExtension.ps1"
     additionalArguments = @(
-      "-extensionId hashicorp.terraform",
-      "-extensionId azapi-vscode.azapi",
-      "-extensionId ms-azuretools.vscode-azureterraform"
+      "-extensionId ms-azuretools.visualstudiobicep"
     )
   },
   @{ 
-    name = "Terraform CLI" 
-    script = "Install-TerraformCliForWindows.ps1" 
+    name = "Bicep CLI" 
+    script = "Install-BicepCliForWindows.ps1" 
   },
   @{ 
     name = "Azure CLI"
     script = "Install-AzureCliForWindows.ps1" 
+  },
+  @{ 
+    name = "Azure PowerShell Modules" 
+    script = "Install-AzPowerShellModules.ps1"
   }
 )
 
