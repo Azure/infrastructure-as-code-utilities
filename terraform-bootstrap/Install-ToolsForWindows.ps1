@@ -22,16 +22,17 @@ function Invoke-DownloadAndRunScript {
     [string]$toolsPath,
     [string]$additionalArguments = ""
   )
-
-  $scriptPath = Join-Path $toolsPath $scriptFileName
+  
   $logFilePath = Join-Path $toolsPath $scriptFileName.Replace(".ps1", ".log")
   if(-not (Test-Path $logFilePath)) {
     New-Item -ItemType "file" $logFilePath -Force
   }
-  New-Item -ItemType "file" $scriptPath -Force
+
+  $scriptPath = Join-Path $toolsPath $scriptFileName
   if(-not (Test-Path $scriptPath)) {
     (Invoke-WebRequest "https://raw.githubusercontent.com/Azure/infrastructure-as-code-utilities/refs/heads/main/$sciptFileFolder/$scriptFileName").Content | Out-File $scriptPath -Force
-  }  
+  }
+
   Invoke-Expression "$scriptPath -toolsPath `"$toolsPath`" -logFilePath `"$logFilePath`" $additionalArguments"
 }
 
