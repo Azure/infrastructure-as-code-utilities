@@ -37,6 +37,6 @@ $tools = @(
 
 $toolsJsonFilePath = Join-Path $toolsPath "tools.json"
 
-ConvertTo-Json $tools -Compress | Out-File $toolsJsonFilePath -Force
+ConvertTo-Json $tools | Out-File $toolsJsonFilePath -Force
 
 Invoke-Expression "$scriptPath -toolsPath `"$toolsPath`" -toolsJsonFilePath `"$toolsJsonFilePath`""
