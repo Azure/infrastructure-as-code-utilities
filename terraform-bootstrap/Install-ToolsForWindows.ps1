@@ -56,10 +56,6 @@ function Invoke-DownloadAndRunScript {
   }
 
   Invoke-Expression "$scriptPath -toolsPath `"$toolsPath`" -logFilePath `"$logFilePath`" $additionalArguments"
-
-  if($message -ne "") {
-    Write-Output ""
-  }
 }
 
 try {
@@ -83,12 +79,14 @@ try {
   # Install Azure CLI
   Invoke-DownloadAndRunScript -scriptFileName "Install-AzureCliForWindows.ps1" -toolsPath $toolsPath -message "Installing Azure CLI"
 
+  Write-Output ""
   Write-Output "Tools installation completed successfully."
   Write-Output "Please close this terminal to apply the PATH changes."
   Read-Host -Prompt "Press any key to exit..."
   exit 0
 
 } catch {
+  Write-Output ""
   Write-Output "An error occurred during the installation process."
   Write-Output "Please check the logs in $toolsPath for more information."
   $failureLog = Join-Path $toolsPath "Install_Failed.log"
