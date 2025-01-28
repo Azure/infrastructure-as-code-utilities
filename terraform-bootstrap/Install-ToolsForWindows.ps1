@@ -30,7 +30,7 @@ function Invoke-DownloadAndRunScript {
 
   $scriptPath = Join-Path $toolsPath $scriptFileName
   if(-not (Test-Path $scriptPath)) {
-    (Invoke-WebRequest "https://raw.githubusercontent.com/Azure/infrastructure-as-code-utilities/refs/heads/main/$sciptFileFolder/$scriptFileName").Content | Out-File $scriptPath -Force
+    (Invoke-WebRequest "https://raw.githubusercontent.com/Azure/infrastructure-as-code-utilities/refs/heads/main/$scriptFileFolder/$scriptFileName").Content | Out-File $scriptPath -Force
   }
 
   Invoke-Expression "$scriptPath -toolsPath `"$toolsPath`" -logFilePath `"$logFilePath`" $additionalArguments"
