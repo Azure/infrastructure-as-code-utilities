@@ -3,8 +3,6 @@ param(
   [string]$logFilePath
 )
 
-Write-Output "---"
-
 $ProgressPreference = 'SilentlyContinue'; 
 $msiPath = Join-Path $toolsPath "AzureCLI.msi"
 
@@ -16,5 +14,3 @@ Start-Process msiexec.exe -Wait -ArgumentList "/i `"$msiPath`" /quiet /L*V $logF
 Remove-Item $msiPath
 
 Write-Output "- Finished Installing Azure CLI..."
-
-Write-Output "---"

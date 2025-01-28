@@ -3,7 +3,6 @@ param(
   [string]$logFilePath
 )
 
-Write-Output "---"
 Write-Output "- Finding Latest Git Version..."
 $repoReleaseUrl = "https://api.github.com/repos/git-for-windows/git/releases/latest"
 $releaseData = Invoke-RestMethod $repoReleaseUrl -SkipHttpErrorCheck -StatusCodeVariable "statusCode"
@@ -27,4 +26,3 @@ Start-Process "$targetFile" -Wait -ArgumentList "/VERYSILENT", "/DIR=`"$installP
 Remove-Item $targetFile
 
 Write-Output "- Finished Installing Git..."
-Write-Output "---"

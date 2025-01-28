@@ -3,8 +3,6 @@ param(
   [string]$logFilePath
 )
 
-Write-Output "---"
-
 ## Get latest version of Terraform
 Write-Output "- Finding Latest Terraform Version..."
 $versionResponse = Invoke-WebRequest -Uri "https://checkpoint-api.hashicorp.com/v1/check/terraform"
@@ -31,4 +29,3 @@ $env:PATH = "$($unzipdir);$env:PATH"
 [System.Environment]::SetEnvironmentVariable('PATH', $env:PATH, 'User')
 
 Write-Output "- Finished Installing Terraform..."
-Write-Output "---"
