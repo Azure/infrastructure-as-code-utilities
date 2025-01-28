@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue';
 $scriptFileName = "Install-ToolsForWindows.ps1"
 $scriptPath = Join-Path $toolsPath $scriptFileName
 New-Item -ItemType "file" $scriptPath -Force | Out-String | Write-Verbose
-(Invoke-WebRequest "https://raw.githubusercontent.com/Azure/terraform-utilities/refs/heads/main/shared-bootstrap/$scriptFileName").Content | Out-File $scriptPath -Force
+(Invoke-WebRequest "https://raw.githubusercontent.com/Azure/infrastructure-as-code-utilities/refs/heads/main/shared-bootstrap/$scriptFileName").Content | Out-File $scriptPath -Force
 
 $tools = @(
   @{ 
