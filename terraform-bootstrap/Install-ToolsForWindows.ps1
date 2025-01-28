@@ -83,6 +83,6 @@ try {
 } catch {
   Write-Output "An error occurred during the installation process."
   Write-Output "Please check the logs in $toolsPath for more information."
-  $failureLog = Join-Path $toolsPath "Install_Failed.txt"
+  $failureLog = Join-Path $toolsPath "Install_Failed.log"
   $_ | Out-File $failureLog -Force
 }
