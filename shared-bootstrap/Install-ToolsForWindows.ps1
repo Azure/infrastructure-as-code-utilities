@@ -66,7 +66,7 @@ try {
   $ProgressPreference = 'SilentlyContinue';
   New-Item -Path $toolsPath -ItemType Directory -Force | Out-String | Write-Verbose
 
-  $toolsJsonFilePath = Get-Content $toolsJsonFilePath | ConvertFrom-Json
+  $toolsJson = Get-Content $toolsJsonFilePath | ConvertFrom-Json
 
   foreach($tool in $toolsJson) {
     if($null -eq $tool.additionalArguments) {
