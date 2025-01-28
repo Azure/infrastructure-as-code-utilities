@@ -31,7 +31,7 @@ $tools = @(
   },
   @{ 
     name = "Azure CLI"
-    script = "Install-AzureCLIForWindows.ps1" 
+    script = "Install-AzureCliForWindows.ps1" 
   }
 )
 
