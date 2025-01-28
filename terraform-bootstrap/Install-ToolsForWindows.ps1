@@ -62,8 +62,6 @@ function Invoke-DownloadAndRunScript {
   }
 }
 
-
-
 try {
   Write-Output "Starting Tools Install..."
   Write-Output "Logs and local installs can be found in $toolsPath."
