@@ -14,11 +14,11 @@ if($statusCode -ne 200) {
 Write-Output "- Downloading Bicep..."
 $version = $releaseData.tag_name
 $exeName = "bicep-win-x64.exe"
-$installPath = Join-Path -Path $toolsPath -ChildPath "git_$version"
+$installPath = Join-Path -Path $toolsPath -ChildPath "bicep_$version"
 New-Item -Path $installPath -ItemType Directory -Force | Out-String | Write-Verbose
 
 
-$targetFile = Join-Path -Path $toolsPath -ChildPath $exeName
+$targetFile = Join-Path -Path $installPath -ChildPath $exeName
 $url = "https://github.com/Azure/bicep/releases/download/$version/$exeName"
 Invoke-WebRequest -Uri $url -OutFile "$targetFile"
 

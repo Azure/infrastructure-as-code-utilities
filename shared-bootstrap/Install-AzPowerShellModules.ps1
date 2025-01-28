@@ -4,5 +4,5 @@ param(
 )
 
 Write-Output "- Installing Az PowerShell Module..."
-Install-Module Az
+Install-Module Az -SkipPublisherCheck
 Write-Output "- Finished Installing Az PowerShell Module..."
