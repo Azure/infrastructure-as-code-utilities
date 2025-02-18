@@ -11,16 +11,16 @@ if($statusCode -ne 200) {
 }
 
 $version = $releaseData.tag_name
+$asset = $releaseData.assets | Where-Object { $_.name.EndsWith("64-bit.exe")  }
+$exeName = $asset.name
+$url = $asset.browser_download_url
 Write-Output "- Found Git Version $version"
 
 Write-Output "- Downloading Git Installer..."
-$versionExe = $version.Replace("v", "").Replace("windows.", "")
-$exeName = "Git-$versionExe-64-bit.exe"
 $installPath = Join-Path -Path $toolsPath -ChildPath "git_$version"
 New-Item -Path $installPath -ItemType Directory -Force | Out-String | Write-Verbose
 
 $targetFile = Join-Path -Path $toolsPath -ChildPath $exeName
-$url = "https://github.com/git-for-windows/git/releases/download/$version/$exeName"
 Write-Output "- Downloading from $url"
 Invoke-WebRequest -Uri $url -OutFile "$targetFile"
 
