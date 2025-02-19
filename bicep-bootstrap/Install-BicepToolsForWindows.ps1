@@ -17,6 +17,13 @@ $tools = @(
     script = "Install-GitForWindows.ps1"
   },
   @{ 
+    name = "Visual Studio Code Settings" 
+    script = "Install-VisualStudioCodeSetting.ps1"
+    additionalArguments = @(
+      "-settingKey files.autoSave -settingValue afterDelay"
+    )
+  },
+  @{ 
     name = "Visual Studio Code Extensions" 
     script = "Install-VisualStudioCodeExtension.ps1"
     additionalArguments = @(
