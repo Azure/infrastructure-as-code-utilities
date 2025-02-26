@@ -1,6 +1,6 @@
-# Terraform Utilities
+# Infrastructure as Code Utilities
 
-This repository contains a collection of utilities for working with Terraform.
+This repository contains a collection of utilities for working with Bicep and Terraform.
 
 ## Utilities
 
@@ -8,9 +8,9 @@ The utilities available in this repository are:
 
 ### Bootstrap
 
-Utility scripts for bootstrapping a Terraform environment by installing the required tooling.
+Utility scripts for bootstrapping an IaC environment by installing the required tooling.
     
-#### terraform-bootstrap/Install-ToolsForWindows.ps1
+#### Terraform: terraform-bootstrap/Install-TerraformToolsForWindows.ps1
 
 This script installs the base set of tools required for Terraform on Windows.
 
@@ -26,13 +26,39 @@ How to run:
 In most cases you'll need to run this script as an administrator. You can run the script directly from the web using the following PowerShell script:
 
 ```powershell
-$toolsPath = "$env:USERPROFILE/tools"
-$scriptFileName = "Install-ToolsForWindows.ps1"
+$toolsPath = Join-Path $env:USERPROFILE "tools"
+$scriptFileName = "Install-TerraformToolsForWindows.ps1"
 $scriptPath = Join-Path $toolsPath $scriptFileName
-New-Item -ItemType "file" $scriptPath -Force
-(Invoke-WebRequest "https://raw.githubusercontent.com/Azure/terraform-utilities/refs/heads/main/terraform-bootstrap/$scriptFileName").Content | Out-File $scriptPath -Force
+New-Item -ItemType "file" $scriptPath -Force | Out-String | Write-Verbose
+(Invoke-WebRequest "https://raw.githubusercontent.com/Azure/infrastructure-as-code-utilities/refs/heads/main/terraform-bootstrap/$scriptFileName").Content | Out-File $scriptPath -Force
 Invoke-Expression "$scriptPath -toolsPath `"$toolsPath`""
-#Remove-Item $scriptPath
+
+```
+
+#### Bicep: bicep-bootstrap/Install-BicepToolsForWindows.ps1
+
+This script installs the base set of tools required for Bicep on Windows.
+
+It includes the following tools:
+
+* git CLI
+* Bicep CLI
+* Azure CLI
+* Azure PowerShell Modules
+* Visual Studio Code extensions for Azure Bicep
+
+How to run:
+
+In most cases you'll need to run this script as an administrator. You can run the script directly from the web using the following PowerShell script:
+
+```powershell
+$toolsPath = Join-Path $env:USERPROFILE "tools"
+$scriptFileName = "Install-BicepToolsForWindows.ps1"
+$scriptPath = Join-Path $toolsPath $scriptFileName
+New-Item -ItemType "file" $scriptPath -Force | Out-String | Write-Verbose
+(Invoke-WebRequest "https://raw.githubusercontent.com/Azure/infrastructure-as-code-utilities/refs/heads/main/bicep-bootstrap/$scriptFileName").Content | Out-File $scriptPath -Force
+Invoke-Expression "$scriptPath -toolsPath `"$toolsPath`""
+
 ```
 
 ## Contributing
