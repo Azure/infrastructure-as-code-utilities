@@ -27,7 +27,8 @@ $tools = @(
     name = "Visual Studio Code Extensions" 
     script = "Install-VisualStudioCodeExtension.ps1"
     additionalArguments = @(
-      "-extensionId ms-azuretools.visualstudiobicep"
+      "-extensionId ms-azuretools.vscode-bicep",
+      "-extensionId ms-vscode.PowerShell"
     )
   },
   @{ 
