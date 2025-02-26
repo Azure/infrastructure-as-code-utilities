@@ -1,8 +1,9 @@
 param(
   [string]$toolsPath,
-  [string]$logFilePath
+  [string]$logFilePath,
+  [string]$moduleName = "Az"
 )
 
 Write-Output "- Installing Az PowerShell Module..."
-Install-Module Az -SkipPublisherCheck -Force
+Install-Module $moduleName -SkipPublisherCheck -Force
 Write-Output "- Finished Installing Az PowerShell Module..."
