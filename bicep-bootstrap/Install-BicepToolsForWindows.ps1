@@ -42,6 +42,9 @@ $tools = @(
   @{ 
     name = "Azure PowerShell Modules" 
     script = "Install-AzPowerShellModules.ps1"
+    additionalArguments = @(
+      "-moduleName Az.Resources"
+    )
   }
 )
 
