@@ -1,5 +1,6 @@
 param(
-  [string]$toolsPath = "$env:USERPROFILE\tools"
+  [string]$toolsPath = "$env:USERPROFILE\tools",
+  [string]$skipInstalls = @()
 )
 
 Write-Output "Starting Bicep Tools for Windows Install..."
@@ -47,6 +48,14 @@ $tools = @(
     )
   }
 )
+
+$finalTools = @()
+foreach($tool in $tools) {
+  if($skipInstalls.Contains($tool.name)) {
+    continue
+  }
+  $finalTools += $tool
+}
 
 $toolsJsonFilePath = Join-Path $toolsPath "tools.json"
 
