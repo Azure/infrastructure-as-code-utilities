@@ -1,5 +1,6 @@
 param(
-  [string]$toolsPath = "$env:USERPROFILE\tools"
+  [string]$toolsPath = "$env:USERPROFILE\tools",
+  [array]$skipInstalls = @()
 )
 
 Write-Output "Starting Terraform Tools for Windows Install..."
@@ -42,8 +43,16 @@ $tools = @(
   }
 )
 
+$finalTools = @()
+foreach($tool in $tools) {
+  if($skipInstalls.Contains($tool.name)) {
+    continue
+  }
+  $finalTools += $tool
+}
+
 $toolsJsonFilePath = Join-Path $toolsPath "tools.json"
 
-ConvertTo-Json $tools | Out-File $toolsJsonFilePath -Force
+ConvertTo-Json $finalTools | Out-File $toolsJsonFilePath -Force
 
 Invoke-Expression "$scriptPath -toolsPath `"$toolsPath`" -toolsJsonFilePath `"$toolsJsonFilePath`""
