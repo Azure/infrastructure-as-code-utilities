@@ -1,6 +1,6 @@
 param(
   [string]$toolsPath = "$env:USERPROFILE\tools",
-  [string]$skipInstalls = @()
+  [array]$skipInstalls = @()
 )
 
 Write-Output "Starting Bicep Tools for Windows Install..."
