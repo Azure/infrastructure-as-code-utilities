@@ -59,6 +59,6 @@ foreach($tool in $tools) {
 
 $toolsJsonFilePath = Join-Path $toolsPath "tools.json"
 
-ConvertTo-Json $tools | Out-File $toolsJsonFilePath -Force
+ConvertTo-Json $finalTools | Out-File $toolsJsonFilePath -Force
 
 Invoke-Expression "$scriptPath -toolsPath `"$toolsPath`" -toolsJsonFilePath `"$toolsJsonFilePath`""
