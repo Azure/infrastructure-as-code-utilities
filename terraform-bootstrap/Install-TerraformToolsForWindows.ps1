@@ -29,7 +29,6 @@ $tools = @(
     script = "Install-VisualStudioCodeExtension.ps1"
     additionalArguments = @(
       "-extensionId hashicorp.terraform",
-      "-extensionId azapi-vscode.azapi",
       "-extensionId ms-azuretools.vscode-azureterraform"
     )
   },
