@@ -14,10 +14,6 @@ New-Item -ItemType "file" $scriptPath -Force | Out-String | Write-Verbose
 
 $tools = @(
   @{
-    name = "PowerShell"
-    script = "Update-PowerShell.ps1"
-  },
-  @{
     name = "Git"
     script = "Install-GitForWindows.ps1"
   },
@@ -50,6 +46,10 @@ $tools = @(
     additionalArguments = @(
       "-moduleName Az.Resources"
     )
+  },
+  @{
+    name = "PowerShell"
+    script = "Update-PowerShell.ps1"
   }
 )
 
